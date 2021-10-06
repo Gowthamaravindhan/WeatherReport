@@ -1,0 +1,76 @@
+<div >
+  <h3 >Search for Weather</h3>   
+  </div>
+<div class="search">
+  <form [formGroup]= "weatherSearchForm" (ngSubmit)="sendToAPIXU()">
+    <!-- <div class="form-group" > -->
+
+      <mat-form-field  appearance="legacy">
+        <mat-label>Location</mat-label>
+      <input matInput class="form-control" type="text" id="weatherLocation" placeholder="Please input a Location" formControlName="location" />
+     <!-- </div> -->
+     <mat-icon matSuffix>place</mat-icon>
+     </mat-form-field>
+     <div class="submit">
+        <button mat-raised-button color="primary"type="submit"  >Search for the weather</button>
+    </div>
+    </form>
+
+    <!-- <div *ngFor="let loc of locationsList">
+      <span class="location-link">{{loc.location}}</span> <span>{{loc.data}}</span>
+      </div>
+      <br>
+      <br><br><br> -->
+      
+</div>
+<br> <br>
+<!-- <table  style='border: 1px solid #900'>
+  <tbody>
+    <tr>
+      <td>Location</td>
+      <td>{{this.weatherData?.name}}</td>
+    </tr>
+  <tr>
+    <td>Current weather</td>
+    <td style="text-transform:capitalize;">{{weatherDesc}}</td>
+  </tr>
+  <tr>
+    <td>Temperature</td>
+    <td>{{temperature}}<sup>0</sup>C</td>
+  </tr>
+  <tr>
+    <td>Wind</td>
+    <td>{{wind}}</td>
+  </tr>
+  <tr>
+    <td>Pressure</td>
+    <td>{{pressure}}hPa</td>
+  </tr>
+  <tr>
+    <td>Longitude</td>
+    <td >{{lon}}</td>
+  </tr>
+  <tr>
+    <td>Latitude</td>
+    <td >{{lat}}</td>
+  </tr>
+  </tbody>
+</table> -->
+<table>
+<tr>
+  <th>Location</th>
+  <th>Temperature</th>
+  <th>Current Weather</th>
+  <th>Wind</th>
+  <th>Pressure</th>
+  <th>Latitude & Longitude</th>
+</tr>
+<tr *ngFor="let l of locationData">
+  <td>{{l.name}}</td>
+  <td>{{(l.main.temp-273).toFixed(1)}}<sup>0</sup>C</td>
+  <td>{{l.weather[0].description}}</td>
+  <td>{{l.wind.speed }}ms {{l.wind.deg}}deg</td>
+  <td>{{l.main.pressure}}hPa</td>
+  <td>{{l.coord.lat}}<sup>o</sup>,{{l.coord.lon}}<sup>0</sup></td>
+</tr>
+</table>
